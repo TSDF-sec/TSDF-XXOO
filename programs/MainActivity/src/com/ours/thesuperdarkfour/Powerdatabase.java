@@ -103,6 +103,25 @@ public class Powerdatabase {
 		return 0;
 	}
 
+	public ArrayList<Power> search( ArrayList<SearchCondition> conditions) {
+		ArrayList<Power> results = new ArrayList<Power> ();
+		for (Iterator iter = powers.iterator(); iter.hasNext();) {
+			Power p = (Power)iter.next();
+			boolean ok = true;
+			for (Iterator iter2 = conditions.iterator(); iter2.hasNext();) {
+				SearchCondition c = (SearchCondition) iter2.next();
+				if (!c.satisfy(p)) {
+					ok = false;
+					break;
+				}
+			}
+			if (ok == true) {
+				results.add(p);
+			}
+		}
+		return results;
+	}
+	
 	//≤‚ ‘”√µƒmain
 	public static void main(String args[]) {
 		try {
