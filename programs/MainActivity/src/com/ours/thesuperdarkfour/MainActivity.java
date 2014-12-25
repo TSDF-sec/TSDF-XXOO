@@ -27,9 +27,10 @@ public class MainActivity extends Activity {
         public void onClick(View V){
     		Recorder r = new Recorder();
     		Power p = new Power();
-    		p.powerID = 6;
     		r.record(p);
         	tv1.setText(String.valueOf(p.powerID));
+        	
+        	
         } 
     }
     
