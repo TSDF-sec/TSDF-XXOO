@@ -8,22 +8,39 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ours.thesuperdarkfour.MainActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="88dp"
-        android:text="TextView" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
-        android:text="Button" />
+	<Button 
+	    android:id="@+id/user_module"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentTop="true"
+	    android:text="@string/user_module_text"
+	    android:onClick="UserInfoMenu"
+	    />
+	
+	<Button 
+	    android:id="@+id/power_module"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/user_module"
+	    android:layout_below="@+id/user_module"
+	    android:text="@string/power_module_text"
+	    />
+	<Button 
+	    android:id="@+id/plan_module"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/user_module"
+		android:layout_below="@+id/power_module"
+	    android:text="@string/plan_module_text"
+	    />
+	<Button 
+	    android:id="@+id/other_module"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/user_module"
+		android:layout_below="@+id/plan_module"
+	    android:text="@string/extend_module_text"
+	    />"
 
 </RelativeLayout>

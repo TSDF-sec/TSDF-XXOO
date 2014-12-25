@@ -1,6 +1,7 @@
 package com.ours.thesuperdarkfour;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,20 +11,21 @@ import android.view.View.OnClickListener;
 
 public class MainActivity extends Activity {
 
-	private TextView tv1 = null;
-	private Button bt1 = null;
+//	private TextView tv1 = null;
+//	private Button bt1 = null;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-        this.tv1=(TextView)super.findViewById(R.id.textView1);
-        this.bt1=(Button)super.findViewById(R.id.button1);
-        bt1.setOnClickListener(new ShowListener());
+//        this.tv1=(TextView)super.findViewById(R.id.textView1);
+//        this.bt1=(Button)super.findViewById(R.id.button1);
+//        bt1.setOnClickListener(new ShowListener());
 	}
 
-    private class ShowListener implements OnClickListener{
+/*    private class ShowListener implements OnClickListener{
         public void onClick(View V){
     		Recorder r = new Recorder();
     		Power p = new Power();
@@ -32,7 +34,7 @@ public class MainActivity extends Activity {
         	tv1.setText(String.valueOf(p.powerID));
         } 
     }
-    
+ */   
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -50,5 +52,10 @@ public class MainActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void showUserInfo(View view) {
+		Intent userInfoIntent = new Intent(this, UserInfoActivity.class);
+		User curUser = new User();
 	}
 }
