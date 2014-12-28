@@ -22,6 +22,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DimensionsActivity"
+            android:label="@string/title_activity_dimensions"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ours.thesuperdarkfour.MainActivity" />
+        </activity>
+        <activity
+            android:name=".DimensionPowersActivity"
+            android:label="@string/title_activity_dimension_powers"
+            android:parentActivityName=".DimensionsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ours.thesuperdarkfour.DimensionsActivity" />
+        </activity>
     </application>
 
 </manifest>

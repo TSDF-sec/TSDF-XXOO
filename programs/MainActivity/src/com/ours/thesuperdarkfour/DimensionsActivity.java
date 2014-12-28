@@ -1,35 +1,22 @@
 package com.ours.thesuperdarkfour;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.*;
-import android.view.View.OnClickListener;
 
-public class MainActivity extends Activity {
+public class DimensionsActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		 
+		setContentView(R.layout.activity_dimensions);
 	}
 
-    private class ShowListener implements OnClickListener{
-        public void onClick(View V){
-    		Recorder r = new Recorder();
-    		Power p = new Power();
-    		r.record(p);       	
-        } 
-    }
-    
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.dimensions, menu);
 		return true;
 	}
 
@@ -43,10 +30,5 @@ public class MainActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-	
-	public void showDimensions(View view) {
-		Intent dimIntent  = new Intent(this, DimensionsActivity.class);
-		startActivity(dimIntent);
 	}
 }
