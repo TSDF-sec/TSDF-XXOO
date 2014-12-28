@@ -15,7 +15,7 @@
 	    android:layout_alignParentLeft="true"
 	    android:layout_alignParentTop="true"
 	    android:text="@string/user_module_text"
-	    android:onClick="UserInfoMenu"
+	    android:onClick="userInfoMenu"
 	    />
 	
 	<Button 
