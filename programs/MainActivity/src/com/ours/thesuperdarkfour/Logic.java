@@ -1,10 +1,18 @@
 package com.ours.thesuperdarkfour;
 
+import java.io.IOException;
+
 import com.ours.thesuperdarkfour.User.Gender;
 
 public class Logic {
 	
 	private User user = new User();
+	public Plan plan = new Plan();
+	public Powerdatabase powerdb;
+	
+	Logic() throws IOException {
+		powerdb = new Powerdatabase();
+	}
 	
 	//建立新用户并存储至TXT，需要指定ID、名字、年龄、性别、密码
 	public void createNewUser(int newID, String newName, int newAge, Gender newGender, String newPasscode) {
@@ -37,7 +45,7 @@ public class Logic {
 	}
 	
 	//也是测试用的main函数
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Logic logic = new Logic();
 		Logic.setInitLogic(logic);
 		

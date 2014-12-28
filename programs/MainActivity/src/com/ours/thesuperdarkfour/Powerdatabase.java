@@ -5,7 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
+
+import android.app.Activity;
+import android.content.res.AssetManager;
 
 /**
  * Powerdatabase: Power数据库
@@ -20,7 +25,7 @@ import java.util.*;
  */
 public class Powerdatabase {
 
-	public static final String DATABASE_NAME="power.db";
+	private final String DATABASE_NAME="./power.db";
 	private ArrayList<Power> powers;
 	short _currID = 0;
 	//构造函数，不需多解释了吧。。。
@@ -29,13 +34,26 @@ public class Powerdatabase {
 		powers = new ArrayList();
 		FileReader fr;
 		try {
-			fr = new FileReader(DATABASE_NAME);
+			fr = new FileReader (DATABASE_NAME);
 			//如果文件存在，则从文件中读取所有的Power
 			loadPower(fr);
 		} catch (FileNotFoundException e) {
 			System.out.println("The power database does not exist.");
 		}
 		System.out.println("Init Powerdatabase ok.");
+		
+		//测试用
+		Power p = new Power();
+		p.powerName = "Get up early";
+		p.powerDescription = "Get up before 6:00!";
+		p.powerContributionToDimension[0]=1.0f;
+		addPower(p);
+		
+//		Power p2 = new Power();
+//		p2.powerName = "Practice Java";
+//		p2.powerDescription = "Practice Java for 8 hours!";
+//		p2.powerContributionToDimension[0]=1.0f;
+//		addPower(p2);
 	}
 	
 	
@@ -66,7 +84,7 @@ public class Powerdatabase {
 	public int savePower() throws IOException {
 		FileWriter fw = new FileWriter( DATABASE_NAME );
 		//将所有的Power都存进数据文件中
-		for (Iterator iter = powers.iterator(); iter.hasNext();) {
+		for (Iterator<Power> iter = powers.iterator(); iter.hasNext();) {
 			String buffer = new String();
 			Power p = (Power) iter.next();
 			fw.write(p.powerID+"\n");
