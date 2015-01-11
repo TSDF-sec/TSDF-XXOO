@@ -49,11 +49,11 @@ public class Powerdatabase {
 		p.powerContributionToDimension[0]=1.0f;
 		addPower(p);
 		
-//		Power p2 = new Power();
-//		p2.powerName = "Practice Java";
-//		p2.powerDescription = "Practice Java for 8 hours!";
-//		p2.powerContributionToDimension[0]=1.0f;
-//		addPower(p2);
+		Power p2 = new Power();
+		p2.powerName = "Practice Java";
+		p2.powerDescription = "Practice Java for 8 hours!";
+		p2.powerContributionToDimension[0]=1.0f;
+		addPower(p2);
 	}
 	
 	
@@ -112,6 +112,31 @@ public class Powerdatabase {
 	//获取所有Power
 	public ArrayList<Power> getAllPowers() {
 		return powers;
+	}
+	
+	public Power getPower( short id ) {
+		for (Iterator iter = powers.iterator(); iter.hasNext(); ) {
+			Power p = (Power) iter.next();
+			if (p.powerID == id) {
+				return p;
+			}
+		}
+		return null;
+	}
+	
+	//向数据库中更新一个power，如已存在，覆盖之前的，如不存在则加到列表中
+	public boolean setPower( Power power ) {
+		int index = 0;
+		for (Iterator iter = powers.iterator(); iter.hasNext(); ) {
+			Power p = (Power) iter.next();
+			if (p.powerID == power.powerID) {
+				powers.set( index, power);
+				return true;
+			}
+			index++;
+		}
+		addPower( power );
+		return false;
 	}
 
 	//清空已存在的Power

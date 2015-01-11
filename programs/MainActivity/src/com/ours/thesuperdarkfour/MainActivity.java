@@ -1,6 +1,10 @@
 package com.ours.thesuperdarkfour;
 
+import java.io.IOException;
+
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,15 +25,31 @@ public class MainActivity extends Activity {
         this.tv1=(TextView)super.findViewById(R.id.textView1);
         this.bt1=(Button)super.findViewById(R.id.button1);
         bt1.setOnClickListener(new ShowListener());
+        
+        //Logic的初始化函数
+        Logic logic;
+		try {
+			logic = new Logic();
+	        Logic.setInitLogic(logic);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-    private class ShowListener implements OnClickListener{
+    public class ShowListener implements OnClickListener{
         public void onClick(View V){
     		Recorder r = new Recorder();
     		Power p = new Power();
     		r.record(p);
         	tv1.setText(String.valueOf(p.powerID));
         	
+        	//测试代码：打开一个plan designer的界面
+        	Intent intent = new Intent(MainActivity.this, PlanDesignerActivity.class);
+//        	intent.setComponent(new ComponentName(
+//        			"com.ours.thesuperdarkfour",
+//        			"com.ours.thesuperdarkfour.PlanDesignerActivity"));
+        	MainActivity.this.startActivity( intent );
         	
         } 
     }

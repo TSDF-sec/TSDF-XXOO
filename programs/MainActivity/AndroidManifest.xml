@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".PlanDesignerActivity"
+            android:label="@string/plan_designer" >
+        </activity>
+        <activity
+            android:name=".PowerSettingActivity"
+            android:label="@string/title_activity_power_setting" >
+        </activity>
     </application>
 
 </manifest>
