@@ -15,5 +15,6 @@
     <string name="text_buttonDim5">Dim5</string>
     <string name="text_defaultDims">0/100</string>
     <string name="title_activity_dimension_powers">属性相关Power</string>
+    <string name="title_activity_plan_designer">PlanDesignerActivity</string>
 
 </resources>
