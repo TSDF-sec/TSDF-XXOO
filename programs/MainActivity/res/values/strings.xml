@@ -2,8 +2,19 @@
 <resources>
 
     <string name="app_name">TheSuperDarkFour</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="userInfo_buttonText">用户档案</string>
+    <string name="text_buttonDimensions">五维属性</string>
+    <string name="text_buttonCurrPlan">当前计划完成</string>
+    <string name="text_buttonOthers">其他</string>
+    <string name="title_activity_dimensions">五维属性</string>
+    <string name="text_buttonDim1">Dim_1</string>
+    <string name="text_buttonDim2">Dim_2</string>
+    <string name="text_buttonDim3">Dim_3</string>
+    <string name="text_buttonDim4">Dim_4</string>
+    <string name="text_buttonDim5">Dim_5</string>
+    <string name="text_defaultDims">0/100</string>
+    <string name="title_activity_dimension_powers">属性相关Power</string>
     <string name="title_activity_plan_designer">PlanDesignerActivity</string>
     <string name="title_activity_user_info">UserInfoActivity</string>
     <string name="plan_designer">plan_designer</string>
