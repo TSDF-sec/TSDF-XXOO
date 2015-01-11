@@ -10,16 +10,10 @@
     tools:context="com.ours.thesuperdarkfour.MainActivity" >
 
     <Button
-    	android:layout_width="wrap_content"
+    	android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
-    	android:text="toPower"
+    	android:text="制定计划"
     	android:onClick="toPower" />
-    
-    <Button
-    	android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:text="toUser"
-    	android:onClick="toUser" />
 
 <RelativeLayout 
     	android:layout_width="wrap_content"
@@ -30,7 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="@string/userInfo_buttonText" />
+        android:text="@string/userInfo_buttonText" 
+        android:onClick="toUser"/>
 
     <Button
         android:id="@+id/button_dimensions"
