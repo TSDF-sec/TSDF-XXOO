@@ -14,20 +14,20 @@ public class UserInfoActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_user_info);
+		//setContentView(R.layout.activity_user_info);
 	}
 
 	public void addButton(View view) {
-		LinearLayout linearLayout1 = (LinearLayout)findViewById(R.id.linearLayout1);
+		//LinearLayout linearLayout1 = (LinearLayout)findViewById(R.id.linearLayout1);
 		TextView tv = new TextView(this);
 		tv.setText("Ohoho");
-		linearLayout1.addView(tv);
+		//linearLayout1.addView(tv);
 	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.user_info, menu);
+		//getMenuInflater().inflate(R.menu.user_info, menu);
 		return true;
 	}
 
