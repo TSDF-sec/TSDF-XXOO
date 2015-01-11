@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
@@ -19,6 +21,36 @@ public class DimensionPowersActivity extends Activity {
 		Log.d(tag, "I'm in DimensionPowersActivity's onCreate()!");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dimension_powers);
+		
+		LinearLayout power_list = (LinearLayout) findViewById (R.id.list_dimensionPowers);
+		LinearLayout.LayoutParams MP_WC = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.MATCH_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT);
+		for (int i=0; i<10; i++) {
+			TextView tmpTextView = new TextView(this);
+			tmpTextView.setText("Power " + i + " information...");
+			power_list.addView(tmpTextView, MP_WC);
+		}		
+	}
+	
+	public void refreshPowers(View view) {
+		
+		Log.d(tag, "refresh Power items. ");
+		EditText editText = (EditText) findViewById(R.id.powers_on_page);
+		int n = Integer.parseInt(editText.getText().toString());
+		Log.d(tag, "refresh Power items. n=" + n);
+		
+		setContentView(R.layout.activity_dimension_powers);
+		LinearLayout power_list = (LinearLayout) findViewById (R.id.list_dimensionPowers);
+		LinearLayout.LayoutParams MP_WC = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.MATCH_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT);
+		for (int i=0; i<n; i++) {
+			Log.d(tag, "refresh Power items. n=" + n);
+			TextView tmpTextView = new TextView(this);
+			tmpTextView.setText("Power " + i + " information...");
+			power_list.addView(tmpTextView, MP_WC);
+		}	
 	}
 	
 	@Override
