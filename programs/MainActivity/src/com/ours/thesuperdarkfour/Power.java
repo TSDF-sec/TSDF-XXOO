@@ -1,8 +1,11 @@
 package com.ours.thesuperdarkfour;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Power {
+import android.text.Editable;
+
+public class Power implements Serializable {
 	//basic information
 	Power() {
 		for(int i=0; i<Dimension.NUM_OF_DIMENSIONS; i++)
@@ -23,8 +26,8 @@ public class Power {
 	
 	//time
 	//For 持续型 only
-	public Date targetTime;
-	public Date actualTime;
+	public Date targetTime = new Date();
+	public Date actualTime = new Date();
 	
 	//record
 	public Recorder powerRecorder; //完成后的Power交由Recorder类处理
