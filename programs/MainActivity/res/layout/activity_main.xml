@@ -21,4 +21,40 @@
     	android:text="toUser"
     	android:onClick="toUser" />
 
+<RelativeLayout 
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/button_userInfo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/userInfo_buttonText" />
+
+    <Button
+        android:id="@+id/button_dimensions"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_userInfo"
+        android:layout_below="@+id/button_userInfo"
+        android:text="@string/text_buttonDimensions" 
+        android:onClick="showDimensions" />
+
+    <Button
+        android:id="@+id/button_currPlan"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_userInfo"
+        android:layout_below="@+id/button_dimensions"
+        android:text="@string/text_buttonCurrPlan" />
+    
+    <Button
+        android:id="@+id/button_others"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_userInfo"
+        android:layout_below="@+id/button_currPlan"
+        android:text="@string/text_buttonOthers" />
+</RelativeLayout>
 </LinearLayout>

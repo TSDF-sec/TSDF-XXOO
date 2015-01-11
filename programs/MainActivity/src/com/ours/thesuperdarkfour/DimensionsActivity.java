@@ -1,9 +1,6 @@
 package com.ours.thesuperdarkfour;
 
-import java.io.IOException;
-
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,39 +8,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class MainActivity extends Activity {
-
+public class DimensionsActivity extends Activity {
 	private static final String tag = "junfeng-debug";
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		Log.d(tag, "I'm in MainActivity's onCreate()");
+		Log.d(tag, "I'm in DimensionsActivity's onCreate()!");
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-
-		try {
-			Logic logic = new Logic();
-			Logic.setInitLogic(logic);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
-    
-	public void toPower(View view) {
-		Intent intent = new Intent(this, PlanDesignerActivity.class);
-	    startActivity(intent);
+		setContentView(R.layout.activity_dimensions);
 	}
 	
-	public void toUser(View view) {
-		Intent intent = new Intent(this, UserInfoActivity.class);
-	    startActivity(intent);
+	public void showPowers(View view) {
+		Log.d(tag, "call showPowers()");
+		Intent dimPowIntent  = new Intent(this, DimensionPowersActivity.class);
+		startActivity(dimPowIntent);
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.dimensions, menu);
 		return true;
 	}
 
@@ -57,11 +41,5 @@ public class MainActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-	
-	public void showDimensions(View view) {
-		Log.d(tag, "call showDimensions()");
-		Intent dimIntent  = new Intent(this, DimensionsActivity.class);
-		startActivity(dimIntent);
 	}
 }
