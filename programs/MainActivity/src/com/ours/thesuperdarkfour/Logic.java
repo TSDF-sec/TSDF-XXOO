@@ -1,13 +1,13 @@
 package com.ours.thesuperdarkfour;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.ours.thesuperdarkfour.User.Gender;
 
 public class Logic {
 	
 	private User user = new User();
-	public Plan plan = new Plan();
 	public Powerdatabase powerdb;
 	
 	Logic() throws IOException {
@@ -21,12 +21,20 @@ public class Logic {
 		user.userAge = newAge;
 		user.userGender = newGender;
 		user.userPasscode = newPasscode;
-		user.saveUserInfoToFile();
+		try {
+			user.saveUserInfoToFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	//加载TXT中存储的用户信息
 	public void loadUserInfo() {
-		user.loadUserInfoFromFile();
+		try {
+			user.loadUserInfoFromFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	//返回用户信息
@@ -57,6 +65,10 @@ public class Logic {
 		System.out.println("His/Her Age is " + Logic.getLogic().user.userAge);
 		System.out.println("His/Her PassCode is " + Logic.getLogic().user.userPasscode);
 		
+		ArrayList<Power> powers = Logic.getLogic().powerdb.getAllPowers();
+		Plan plan = new Plan();
+		plan.addPower(powers);
+		Logic.getLogic().user.addPlan(plan);
 		
 	}
 

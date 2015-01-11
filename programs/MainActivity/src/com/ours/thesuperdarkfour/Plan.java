@@ -12,6 +12,7 @@ import java.util.Iterator;
 
 
 public class Plan {
+	public int planID;
 	public ArrayList<Power> powers = new ArrayList<Power> (); //该Plan中含有的Power
 	
 	//此函数由定制Plan的界面调用

@@ -1,39 +1,41 @@
 package com.ours.thesuperdarkfour;
 
+import java.io.IOException;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
-import android.view.View.OnClickListener;
 
 public class MainActivity extends Activity {
-
-	private TextView tv1 = null;
-	private Button bt1 = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-        this.tv1=(TextView)super.findViewById(R.id.textView1);
-        this.bt1=(Button)super.findViewById(R.id.button1);
-        bt1.setOnClickListener(new ShowListener());
-	}
 
-    private class ShowListener implements OnClickListener{
-        public void onClick(View V){
-    		Recorder r = new Recorder();
-    		Power p = new Power();
-    		r.record(p);
-        	tv1.setText(String.valueOf(p.powerID));
-        	
-        	
-        } 
-    }
+		try {
+			Logic logic = new Logic();
+			Logic.setInitLogic(logic);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
     
+	public void toPower(View view) {
+		Intent intent = new Intent(this, PlanDesignerActivity.class);
+	    startActivity(intent);
+	}
+	
+	public void toUser(View view) {
+		Intent intent = new Intent(this, UserInfoActivity.class);
+	    startActivity(intent);
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
