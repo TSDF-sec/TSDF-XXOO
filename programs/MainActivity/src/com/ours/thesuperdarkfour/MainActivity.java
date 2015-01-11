@@ -3,6 +3,7 @@ package com.ours.thesuperdarkfour;
 import java.io.IOException;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,8 +24,9 @@ public class MainActivity extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
+
     
 	public void toPower(View view) {
 		Intent intent = new Intent(this, PlanDesignerActivity.class);

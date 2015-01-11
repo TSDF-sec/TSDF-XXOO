@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="20dp"
+    tools:context="com.ours.thesuperdarkfour.PowerSettingActivity" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+	        android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:text="Name:" />
+        
+        <EditText
+            android:inputType="text"
+	        android:id="@+id/powerName"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:ems="10"
+	        android:editable="false" />
+        
+    </LinearLayout>
+
+
+    <TextView
+	     android:layout_width="fill_parent"
+	     android:layout_height="wrap_content"
+	     android:layout_marginTop="40dp"
+	     android:text="Description:" />
+
+    <EditText
+        android:id="@+id/powerDescription"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preferred Time:" />
+    
+    <TimePicker
+        android:id="@+id/time"
+        android:layout_margin="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp" />
+    
+    <CheckBox
+        android:id="@+id/checkContinue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/settingOK"
+        android:layout_gravity="left"
+        android:text="Continue" />
+    
+    <Button
+        android:id="@+id/settingOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="OK" />
+
+
+
+
+
+</LinearLayout>
