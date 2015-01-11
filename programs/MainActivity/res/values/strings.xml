@@ -12,7 +12,7 @@
     <string name="text_buttonDim2">Dim_2</string>
     <string name="text_buttonDim3">Dim_3</string>
     <string name="text_buttonDim4">Dim_4</string>
-    <string name="text_buttonDim5">Dim5</string>
+    <string name="text_buttonDim5">Dim_5</string>
     <string name="text_defaultDims">0/100</string>
     <string name="title_activity_dimension_powers">属性相关Power</string>
     <string name="title_activity_plan_designer">PlanDesignerActivity</string>

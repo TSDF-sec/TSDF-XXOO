@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button_userInfo"
         android:layout_below="@+id/button_dimensions"
-        android:text="@string/text_buttonDimensions" />
+        android:text="@string/text_buttonCurrPlan" />
     
     <Button
         android:id="@+id/button_others"
