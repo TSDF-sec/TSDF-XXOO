@@ -44,6 +44,14 @@ public class PowerSettingActivity extends Activity implements OnClickListener {
 			
 			Button btnOK = (Button)findViewById( R.id.settingOK);
 			btnOK.setOnClickListener( this );
+			
+			EditText contributionText = (EditText)findViewById(R.id.contribution);
+			String con = "";
+			for (int i=0; i<Dimension.NUM_OF_DIMENSIONS; i++) {
+				con+=Dimension.discription[i]+":"
+							+power.powerContributionToDimension[i]+"\n";
+			}
+			contributionText.setText( con );
 		}
 	}
 
@@ -95,5 +103,9 @@ public class PowerSettingActivity extends Activity implements OnClickListener {
 		this.finish();
 	}
 	
-	
+	//重写返回键的回调函数：注意一定要加这个，否则会出错
+	@Override
+	public void onBackPressed() {
+		onClick(null);
+	}
 }
