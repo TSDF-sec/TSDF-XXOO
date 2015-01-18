@@ -11,11 +11,25 @@ public class Power implements Serializable {
 		for(int i=0; i<Dimension.NUM_OF_DIMENSIONS; i++)
 			this.powerContributionToDimension[i] = 0.0f;
 	}
+	
+	//构造函数
+	Power( String name, String description, float c1, float c2, 
+			float c3, float c4, float c5, Date t) {
+		powerName = name;
+		this.powerDescription = description;
+		this.powerContributionToDimension[0] = c1;
+		this.powerContributionToDimension[1] = c2;
+		this.powerContributionToDimension[2] = c3;
+		this.powerContributionToDimension[3] = c4;
+		this.powerContributionToDimension[4] = c5;
+		targetTime = t;
+	}
+	
 	public short powerID=0; //在数据库中定义的id
 	public String powerName="NoName"; //Power的名称
 	public String powerDescription="NoDescription"; //Power的描述
 	public float[] powerContributionToDimension 
-		= new float[Dimension.NUM_OF_DIMENSIONS]; //该Power在单位时间内对各个维度的贡献
+		= new float[Dimension.NUM_OF_DIMENSIONS]; //该Power在一小时内对各个维度的贡献
 	
 	//type
 	//Power的类型分为几种：

@@ -20,16 +20,48 @@ import android.content.res.AssetManager;
  * 对五维的贡献 +换行
  * 说明 +换行
  * @author GaoXiang
- *	注意！！！
- * Power名称里面不要带空格！因为空格是分隔符！
  */
 public class Powerdatabase {
 
 	private final String DATABASE_NAME="./power.db";
 	private ArrayList<Power> powers;
 	short _currID = 0;
+	
+	//五维属性：事业、幸福、健康、社交、兴趣
+	//默认的Power：比较长，不想看的把它折叠掉吧
+	private final Power[] defaultPowers = {
+			new Power( "早起", "早起对健康可是有益的呢",
+					0f,0f,1.0f,0f,0f, new Date(0,0,0,7,0)),
+			new Power( "睡懒觉", "睡懒觉对健康可是有益的呢，但是睡多了可没时间干活了哦",
+					-1.0f,0.01f,.5f,0f,0f, new Date(0,0,0,10,0)),
+			new Power( "学习java", "学习java是所有程序员必经之路！",
+					1.0f,0.2f,0.0f,0f,0.2f, new Date(0,0,0,2,0)),
+			new Power( "学习C++", "虽然C++很难但我仍要好好学习它!",
+					1.2f,0.2f,0.0f,0f,0.2f, new Date(0,0,0,2,0)),
+			new Power( "学习python", "Python是世界上最厉害的语言！",
+					1.1f,0.5f,0.0f,0f,0.3f, new Date(0,0,0,2,0)),
+			new Power( "学习Qt", "Qt是最好的GUI!",
+					1.01f,0.5f,0.0f,0f,0.3f, new Date(0,0,0,2,0)),
+			new Power( "按时吃三餐", "吃饭是革命的本钱！",
+					0f,0.2f,1.0f,0f,0.0f, new Date(0,0,0,1,0)),
+			new Power( "早睡不熬夜", "习大大这么说的",
+					0f,0.5f,1.5f,0f,0.0f, new Date(0,0,0,23,0)),
+			new Power( "和朋友一起玩", "朋友！才是人生最珍贵的宝物啊！",
+					0f,1.5f,0.2f,1.0f,0.0f, new Date(0,0,0,1,0)),
+			new Power( "培养一小时兴趣爱好", "给自己的心一个小时的暖意",
+					0f,0.5f,0.1f,0f,1.0f, new Date(0,0,0,1,0)),
+			new Power( "练习三黄对点的剑圣", "果然三黄对点才是真正的剑圣",
+					0f,0.1f,-0.2f,0f,0.2f, new Date(0,0,0,1,0)),
+			new Power( "做老板的项目", "项目不得不做啊",
+					1.2f,-0.5f,-0.5f,-0.1f,0.f, new Date(0,0,0,2,0)),
+			new Power( "健身", "去健身房理解男人的浪漫吧！",
+					0.f,.2f,1.5f,0.1f,0.2f, new Date(0,0,0,0,30)),
+	};
+	
 	//构造函数，不需多解释了吧。。。
-	//还是解释下，它会寻找当前目录下的power.db并从中读取所有power信息，如果没有该文件，就是空的。
+	//还是解释下，它会寻找当前目录下的power.db并从中读取所有power信息
+	//如果没有该文件，就是空的。
+	
 	public Powerdatabase() throws IOException {
 		powers = new ArrayList();
 		FileReader fr;
@@ -42,18 +74,10 @@ public class Powerdatabase {
 		}
 		System.out.println("Init Powerdatabase ok.");
 		
-		//测试用
-		Power p = new Power();
-		p.powerName = "Get up early";
-		p.powerDescription = "Get up before 6:00!";
-		p.powerContributionToDimension[0]=1.0f;
-		addPower(p);
-		
-		Power p2 = new Power();
-		p2.powerName = "Practice Java";
-		p2.powerDescription = "Practice Java for 8 hours!";
-		p2.powerContributionToDimension[0]=1.0f;
-		addPower(p2);
+		//增加一系列默认的Power
+		for (int i =0; i<defaultPowers.length; i++) {
+			this.addPower(defaultPowers[i]);
+		}
 	}
 	
 	

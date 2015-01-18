@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View.OnClickListener;
@@ -60,7 +62,7 @@ public class PlanDesignerActivity extends Activity implements OnClickListener {
 		Button details = new Button( this );
 		details.setText("Detail");
 		details.setId(p.powerID);
-		details.setOnClickListener(new onClickDetails( p.powerID ));
+		details.setOnClickListener(new onClickDetails( p.powerID, this));
 		tablerow.addView(details);
 		
 		view.addView(tablerow);
@@ -69,19 +71,20 @@ public class PlanDesignerActivity extends Activity implements OnClickListener {
 	//按下“details”按钮后的响应函数
 	public class onClickDetails implements OnClickListener {
 		public int powerID;
-		
-		onClickDetails( int powerid ) {
+		Activity parent;
+		onClickDetails( int powerid, Activity parent ) {
 			powerID = powerid;
+			this.parent = parent;
 		}
 		
 		public void onClick(View view) {
 			int id = view.getId();
 			//弹出该power的设置界面
-			Intent intent = new Intent(PlanDesignerActivity.this, PowerSettingActivity.class);
+			Intent intent = new Intent( parent, PowerSettingActivity.class);
 			Bundle bundle = new Bundle();
 			bundle.putInt("id", id);
 			intent.putExtras(bundle);
-			PlanDesignerActivity.this.startActivityForResult( intent, 100 );
+			parent.startActivityForResult( intent, 100 );
 		}
 	}
 	
@@ -140,10 +143,22 @@ public class PlanDesignerActivity extends Activity implements OnClickListener {
 			Logic logic = Logic.getLogic();
 			logic.powerdb.savePower();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		finish();
+	}
+	
+	public void onClickAddNewPower( View v) {
+		//点击“新增Power”键
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("很遗憾");  
+		builder.setMessage("您看，我们现在还不允许用户自己定义Power哦"); 
+		builder.setPositiveButton("确定",  
+                new DialogInterface.OnClickListener() {  
+                    public void onClick(DialogInterface dialog, int whichButton) {  
+                        ;
+                    }  
+                });
+		builder.show();
 	}
 }
