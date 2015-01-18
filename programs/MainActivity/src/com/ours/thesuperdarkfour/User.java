@@ -21,7 +21,6 @@ public class User {
 	public int userAge;
 	public enum Gender{MALE,FEMALE,SHEMALE};
 	public Gender userGender;
-	public String userPasscode;
 	
 	//5 dimensions
 	public Dimension userDimension;
@@ -37,25 +36,18 @@ public class User {
 	//constructors
 	public User(){};
 	
-	public User(int newID, String newName, int newAge, Gender newGender, String newPasscode) {
+	public User(int newID, String newName, int newAge, Gender newGender) {
 		this.userID = newID;
 		this.userName = newName;
 		this.userAge = newAge;
 		this.userGender = newGender;
-		this.userPasscode = newPasscode;
 	}
 	
 	//functions
 	public void saveUserInfoToFile() throws IOException {
-//		FileWriter fw = new FileWriter( "./User.txt" );
-//		fw.write("123");
-//		fw.close();
-		
-
-		BufferedWriter bufferedWriter = null;
 			
 		File file = new File("./User.txt");
-		bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8")); // 指定编码格式，以免读取时中文字符异常
+		BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8")); // 指定编码格式，以免读取时中文字符异常
 		bufferedWriter.append(String.valueOf(this.userID));
 		bufferedWriter.newLine();
 		bufferedWriter.append(this.userName);
@@ -63,8 +55,6 @@ public class User {
 		bufferedWriter.append(String.valueOf(this.userAge));
 		bufferedWriter.newLine();
 		bufferedWriter.append(this.userGender.name());
-		bufferedWriter.newLine();
-		bufferedWriter.append(this.userPasscode);
 		bufferedWriter.newLine();
 		
 		bufferedWriter.close();
@@ -78,7 +68,6 @@ public class User {
 		this.userName = bufferedReader.readLine();
 		this.userAge = Integer.valueOf(bufferedReader.readLine());
 		this.userGender = Gender.valueOf(bufferedReader.readLine());
-		this.userPasscode = bufferedReader.readLine();
 
 		bufferedReader.close();
 

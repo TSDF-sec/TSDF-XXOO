@@ -22,22 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name=".UserInfoActivity"
             android:label="@string/title_activity_user_info" >
-		</activity>
-		
-		<activity
+        </activity>
+        <activity
             android:name=".PlanDesignerActivity"
             android:label="@string/plan_designer" >
         </activity>
-        
         <activity
             android:name=".PowerSettingActivity"
             android:label="@string/title_activity_power_setting" >
-		</activity>
-		
+        </activity>
         <activity
             android:name=".DimensionsActivity"
             android:label="@string/title_activity_dimensions"
@@ -53,6 +49,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ours.thesuperdarkfour.DimensionsActivity" />
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/title_activity_register" >
         </activity>
     </application>
 

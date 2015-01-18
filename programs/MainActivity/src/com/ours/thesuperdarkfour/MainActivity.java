@@ -1,5 +1,6 @@
 package com.ours.thesuperdarkfour;
 
+import java.io.File;
 import java.io.IOException;
 
 import android.app.Activity;
@@ -10,6 +11,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
@@ -27,6 +30,15 @@ public class MainActivity extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		File file = new File("./User.txt");
+		boolean userExists = file.exists();
+		if (userExists) {
+			Log.d(tag, "Exist!");
+			Logic.getLogic().loadUserInfo();
+			TextView textView_welcome = (TextView) findViewById(R.id.textView_Welcome);
+			textView_welcome.setText("»¶Ó­£¬" + Logic.getLogic().getUser().userName);
+		}
 
 	}
     
@@ -37,6 +49,11 @@ public class MainActivity extends Activity {
 	
 	public void toUser(View view) {
 		Intent intent = new Intent(this, UserInfoActivity.class);
+	    startActivity(intent);
+	}
+	
+	public void register(View view) {
+		Intent intent = new Intent(this, RegisterActivity.class);
 	    startActivity(intent);
 	}
 	

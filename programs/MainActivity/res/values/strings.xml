@@ -18,5 +18,13 @@
     <string name="title_activity_plan_designer">PlanDesignerActivity</string>
     <string name="title_activity_user_info">UserInfoActivity</string>
     <string name="plan_designer">plan_designer</string>
+    <string name="title_activity_register">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string-array name="gender_array">
+        <item>爷们</item>
+        <item>妹子</item>
+        <item>3rd</item>
+    </string-array>
 
 </resources>

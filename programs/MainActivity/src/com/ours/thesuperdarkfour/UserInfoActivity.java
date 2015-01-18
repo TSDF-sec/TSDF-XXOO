@@ -24,7 +24,7 @@ public class UserInfoActivity extends Activity {
 		setContentView(R.layout.activity_user_info);
 		
 		Logic logic = Logic.getLogic();
-		Logic.getLogic().createNewUser(222, "大值神", 88, Gender.MALE, "wangtongxue");
+		//logic.createNewUser(222, "大值神", 88, Gender.MALE);
 		logic.loadUserInfo();
 		Power p = new Power();
 		p.powerName = "Attend a conference";

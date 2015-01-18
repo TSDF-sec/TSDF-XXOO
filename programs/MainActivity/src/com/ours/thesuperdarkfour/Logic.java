@@ -15,12 +15,11 @@ public class Logic {
 	}
 	
 	//建立新用户并存储至TXT，需要指定ID、名字、年龄、性别、密码
-	public void createNewUser(int newID, String newName, int newAge, Gender newGender, String newPasscode) {
+	public void createNewUser(int newID, String newName, int newAge, Gender newGender) {
 		user.userID = newID;
 		user.userName = newName;
 		user.userAge = newAge;
 		user.userGender = newGender;
-		user.userPasscode = newPasscode;
 		try {
 			user.saveUserInfoToFile();
 		} catch (IOException e) {
@@ -57,18 +56,16 @@ public class Logic {
 		Logic logic = new Logic();
 		Logic.setInitLogic(logic);
 		
-//		Logic.getLogic().createNewUser(222, "GX", 88, Gender.MALE, "wangtongxue");
+		Logic.getLogic().createNewUser(222, "GX", 88, Gender.MALE);
 		Logic.getLogic().loadUserInfo();
 		
 		System.out.println("Current User is " + Logic.getLogic().user.userName);
 		System.out.println("His/Her ID is " + Logic.getLogic().user.userID);
-		System.out.println("His/Her Age is " + Logic.getLogic().user.userAge);
-		System.out.println("His/Her PassCode is " + Logic.getLogic().user.userPasscode);
-		
-		ArrayList<Power> powers = Logic.getLogic().powerdb.getAllPowers();
-		Plan plan = new Plan();
-		plan.addPower(powers);
-		Logic.getLogic().user.addPlan(plan);
+		System.out.println("His/Her Age is " + Logic.getLogic().user.userAge);		
+//		ArrayList<Power> powers = Logic.getLogic().powerdb.getAllPowers();
+//		Plan plan = new Plan();
+//		plan.addPower(powers);
+//		Logic.getLogic().user.addPlan(plan);
 		
 	}
 

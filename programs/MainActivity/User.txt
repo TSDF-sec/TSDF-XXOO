@@ -2,5 +2,3 @@
 GX
 88
 MALE
-wangtongxue
-0 1 2
