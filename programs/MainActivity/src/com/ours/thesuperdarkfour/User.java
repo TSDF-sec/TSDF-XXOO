@@ -1,6 +1,7 @@
 package com.ours.thesuperdarkfour;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,9 +13,14 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
+import android.app.Activity;
+import android.content.Context;
 import android.provider.MediaStore.Audio.PlaylistsColumns;
+import android.widget.TextView;
 
 public class User {
+	public static final String fileName = "User.txt";
+	
 	//basic information
 	public int userID;
 	public String userName;
@@ -44,33 +50,52 @@ public class User {
 	}
 	
 	//functions
-	public void saveUserInfoToFile() throws IOException {
-			
-		File file = new File("./User.txt");
-		BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8")); // 指定编码格式，以免读取时中文字符异常
-		bufferedWriter.append(String.valueOf(this.userID));
-		bufferedWriter.newLine();
-		bufferedWriter.append(this.userName);
-		bufferedWriter.newLine();
-		bufferedWriter.append(String.valueOf(this.userAge));
-		bufferedWriter.newLine();
-		bufferedWriter.append(this.userGender.name());
-		bufferedWriter.newLine();
-		
-		bufferedWriter.close();
+	public void saveUserInfoToFile(Activity activity) {
+		try {
+            FileOutputStream outputStream = activity.openFileOutput(fileName, Activity.MODE_PRIVATE);
+            outputStream.write(Integer.toString(this.userID).getBytes());
+            outputStream.write("\n".getBytes());
+            outputStream.write(this.userName.getBytes());
+            outputStream.write("\n".getBytes());
+            outputStream.write(Integer.toString(this.userAge).getBytes());
+            outputStream.write("\n".getBytes());
+            outputStream.write(String.valueOf(this.userGender).getBytes());
+            outputStream.write("\n".getBytes());
+            outputStream.flush();
+            outputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
 	
-	public void loadUserInfoFromFile() throws IOException {
-		String filePath = "./User.txt";
-		
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8")); // 指定读取文件的编码格式，要和写入的格式一致，以免出现中文乱码,
-		this.userID = Integer.valueOf(bufferedReader.readLine());
-		this.userName = bufferedReader.readLine();
-		this.userAge = Integer.valueOf(bufferedReader.readLine());
-		this.userGender = Gender.valueOf(bufferedReader.readLine());
-
-		bufferedReader.close();
-
+	public boolean loadUserInfoFromFile(Activity activity) {
+		try {
+            FileInputStream inputStream = activity.openFileInput(fileName);
+            byte[] bytes = new byte[1024];
+            ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
+            while (inputStream.read(bytes) != -1) {
+                arrayOutputStream.write(bytes, 0, bytes.length);
+            }
+            inputStream.close();
+            arrayOutputStream.close();
+            String content = new String(arrayOutputStream.toByteArray());
+            String [] strings = content.split("\n");
+            System.out.println(strings.length);
+            if (strings.length == 5) {
+	            this.userID = Integer.valueOf(strings[0]);
+	            this.userName = strings[1];
+	            this.userAge = Integer.valueOf(strings[2]);
+	            this.userGender = Gender.valueOf(strings[3]);  
+	            return true;
+			}
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return false;
 	}
 	
 	public void addPlan(Plan plan) {
@@ -83,7 +108,7 @@ public class User {
 		}
 		
 		
-		String fileName = "./User.txt";
+		String fileName = "/User.txt";
 		BufferedWriter bufferedWriter = null;
 		try {
 			bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName, true), "UTF-8")); // 指定编码格式，以免读取时中文字符异常

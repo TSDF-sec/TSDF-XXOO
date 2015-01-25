@@ -1,10 +1,14 @@
 package com.ours.thesuperdarkfour;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,15 +35,12 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		}
 		
-		File file = new File("./User.txt");
-		boolean userExists = file.exists();
-		if (userExists) {
-			Log.d(tag, "Exist!");
-			Logic.getLogic().loadUserInfo();
-			TextView textView_welcome = (TextView) findViewById(R.id.textView_Welcome);
-			textView_welcome.setText("»¶Ó­£¬" + Logic.getLogic().getUser().userName);
+		Boolean userExist = Logic.getLogic().loadUserInfo(this);
+		
+		if (userExist) {
+		TextView textView_welcome = (TextView) findViewById(R.id.textView_Welcome);
+		textView_welcome.setText("»¶Ó­£¬" + Logic.getLogic().getUser().userName );
 		}
-
 	}
     
 	public void toPower(View view) {

@@ -1,11 +1,18 @@
 package com.ours.thesuperdarkfour;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import com.ours.thesuperdarkfour.R.string;
 import com.ours.thesuperdarkfour.User.Gender;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class RegisterActivity extends Activity {
 
@@ -62,10 +70,36 @@ public class RegisterActivity extends Activity {
 		newUserFocus[4] = checkBox_D5.isChecked();
 		
 		//将信息保存至文件
-		Logic.getLogic().createNewUser(222, newUserName, newUserAge, newUserGender);
-		Logic.getLogic().loadUserInfo();
-		System.out.println(Logic.getLogic().getUser().userName);
-		System.out.println(Logic.getLogic().getUser().userAge);
+		Logic.getLogic().createNewUser(this, 222, newUserName, newUserAge, newUserGender);
+		String fileName = "User.txt";
+		
+		//读取
+		try {
+            FileInputStream inputStream = this.openFileInput(fileName);
+            byte[] bytes = new byte[1024];
+            ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
+            while (inputStream.read(bytes) != -1) {
+                arrayOutputStream.write(bytes, 0, bytes.length);
+            }
+            inputStream.close();
+            arrayOutputStream.close();
+            String content = new String(arrayOutputStream.toByteArray());
+            String [] strings = content.split("\n");
+            TextView tv = (TextView) findViewById(R.id.textView_Test);
+            tv.setText(strings[0]);
+            
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+		
+		
+		//Logic.getLogic().createNewUser(222, newUserName, newUserAge, newUserGender);
+		//Logic.getLogic().loadUserInfo();
+		//System.out.println(Logic.getLogic().getUser().userName);
+		//System.out.println(Logic.getLogic().getUser().userAge);
 		
 		//反回主界面
 		Intent intent = new Intent(this, MainActivity.class);

@@ -24,25 +24,7 @@ public class UserInfoActivity extends Activity {
 		setContentView(R.layout.activity_user_info);
 		
 		Logic logic = Logic.getLogic();
-		//logic.createNewUser(222, "¥Û÷µ…Ò", 88, Gender.MALE);
-		logic.loadUserInfo();
-		Power p = new Power();
-		p.powerName = "Attend a conference";
-		logic.powerdb.addPower(p);
-		logic.powerdb.addPower(p);
-		p = new Power();
-		p.powerName = "Hold a conference";
-		logic.powerdb.addPower(p);
-		p = new Power();
-		p.powerName = "Attend or hold 4 conferences";
-		logic.powerdb.addPower(p);
-		try {
-			logic.powerdb.savePower();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		ArrayList<Power> powers = logic.powerdb.getAllPowers();
-		Log.d(debugtag, Integer.toString(powers.size()));
 		
 		TextView textView1 = (TextView)findViewById(R.id.textView_Welcome);
 		String toSet = "ª∂”≠£¨" + logic.getUser().userName;
